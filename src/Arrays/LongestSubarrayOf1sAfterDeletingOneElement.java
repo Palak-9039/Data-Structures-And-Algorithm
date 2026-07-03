@@ -2,7 +2,7 @@ package Arrays;
 
 /*
  LeetCode 1493
-Longest Subarray of 1's After Deleting One Element
+ Longest Subarray of 1's After Deleting One Element
  Link : https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/?envType=study-plan-v2&envId=leetcode-75
 
  Approach:
@@ -12,11 +12,12 @@ Longest Subarray of 1's After Deleting One Element
 - Calculate the valid subarray length at each step using (right - left). This naturally counts for the deletion of one element.
 - Continuously track and update the maximum length found.
 
-Time Complexity: O(n) - Each element is processed at most twice ( once by the right pointer and once by the left).
-Space Complexity: O(1) - Only a few primitive variables are used to track indices and the counts.
+ Time Complexity: O(n) - Each element is processed at most twice ( once by the right pointer and once by the left).
+ Space Complexity: O(1) - Only a few primitive variables are used to track indices and the counts.
  */
 
 public class LongestSubarrayOf1sAfterDeletingOneElement {
+
     public int longestSubarray(int[] nums) {
         int n = nums.length;
         int ans = 0;
@@ -36,3 +37,6 @@ public class LongestSubarrayOf1sAfterDeletingOneElement {
         return ans;
     }
 }
+
+
+
