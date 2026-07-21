@@ -46,6 +46,7 @@ public class UniqueNumberOfOccurrences {
                 return false;
             }
         }
+
         return true;
     }
 }
