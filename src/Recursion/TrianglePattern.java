@@ -17,16 +17,33 @@ package Recursion;
  Space Complexity: O(r) - Proportional to the maximum depth of the recursive call stack, equal to the initial number of rows.
  */
 
+
 public class TrianglePattern {
-    public static void patternWithRecursion(int r, int c){
+    public static void main(String[] args) {
+        trianglePattern(5,0);
+    }
+    public static void invertedTriangle(int r, int c){
         if(r < 1)return;
         if(c == r){
             System.out.println();
-            patternWithRecursion(r-1,0);
+            invertedTriangle(r-1,0);
         }
         else if(c < r){
             System.out.print("* ");
-            patternWithRecursion(r,c+1);
+            invertedTriangle(r,c+1);
         }
     }
+
+    public static void trianglePattern(int r, int c) {
+      if(r == 0)return;
+      if(c == r){
+          trianglePattern(r-1,0);
+          System.out.println();
+      }
+      else if(c < r){
+          trianglePattern(r,c+1);
+          System.out.print("* ");
+      }
+    }
+
 }
