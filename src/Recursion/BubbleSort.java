@@ -4,7 +4,7 @@ import java.util.Arrays;
 /*
  Recursive Bubble Sort
 
- Approach:
+ Approach: 
  - Use recursion to simulate the iterative Bubble Sort process.
  -  i represents the number of elements that are still unsorted.
  -  j traverses the unsorted portion of the array, comparing adjacent elements.
