@@ -24,7 +24,7 @@ package Arrays;
  Space Complexity: O(1) - Only a few variables are used.
 */
 
-public class MinimumSizeSubarryaSum {
+public class MinimumSizeSubarraySum {
     public int minSubArrayLen(int target, int[] nums) {
         int n = nums.length;
         int ans = Integer.MAX_VALUE;
