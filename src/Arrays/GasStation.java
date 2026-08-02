@@ -1,6 +1,54 @@
 package Arrays;
 
 /*
+ Gas Station
+
+ Approach:
+ - Traverse the gas stations once while maintaining the current fuel in the tank.
+ - At each station, calculate the net fuel gained by subtracting the travel cost from the available gas.
+ - Add this net gain to both the current tank and the total fuel.
+ - If the current tank becomes negative, the current starting station cannot complete the journey.
+ - Since none of the stations between the current starting station and the current station can be valid starting points, update the starting station to the next index and reset the current tank to zero.
+ - After traversing all the stations, check whether the total fuel is non-negative.
+ - If the total fuel is negative, completing the circuit is impossible; otherwise, return the recorded starting station.
+
+ Why This Works:
+
+ - If the current tank becomes negative at any station, every station between the current starting station and the failure point can safely be discarded as a possible starting station.
+ - A valid journey is only possible if the total amount of gas is greater than or equal to the total travel cost.
+ - Since the array is traversed only once, the first valid starting station found after eliminating invalid candidates is the unique answer.
+
+
+ Time Complexity: O(n) - The array is traversed only once.
+ Space Complexity: O(1) - Only a few variables are used.
+*/
+
+public class GasStation {
+
+    public int canCompleteCircuit1(int[] gas, int[] cost) {
+        int total = 0;
+        int tank = 0;
+        int start = 0;
+
+        for (int i = 0; i < gas.length; i++) {
+
+            int diff = gas[i] - cost[i];
+
+            total += diff;
+            tank += diff;
+
+            // Cannot reach the next station
+            if (tank < 0) {
+                start = i + 1;
+                tank = 0;
+            }
+        }
+
+        return total >= 0 ? start : -1;
+    }
+
+
+    /*
  Gas Station (Brute Force with Skipping)
 
  Approach:
@@ -25,7 +73,6 @@ package Arrays;
  - Only a few variables are used for simulation.
 */
 
-public class GasStation {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int n = cost.length;
         int right = 0;
