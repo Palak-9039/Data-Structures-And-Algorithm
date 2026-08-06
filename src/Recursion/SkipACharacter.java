@@ -37,7 +37,14 @@ package Recursion;
  Space Complexity: O(n)
 */
 
+
+
 public class SkipACharacter {
+
+    public static void main(String[] args) {
+        String s = "abbacda";
+        System.out.printf(skip(s,"",'d'));
+    }
 
     static StringBuilder helper(String s, char c, StringBuilder ans, int i) {
         if (i == s.length()) {
@@ -77,4 +84,36 @@ public class SkipACharacter {
 
         return helper(s, c, ans + s.charAt(i), i + 1);
     }
+
+
+    /*
+ Skip a Character from String using Recursion (Returning the Answer)
+
+ Approach:
+ - Treat the given string as the unprocessed part of the input.
+ - At each recursive call, process the first character.
+ - If the current character matches the character to skip,
+   ignore it and recurse on the remaining substring.
+ - Otherwise, include the current character in the answer
+   returned by the smaller recursive call.
+ - Continue until the unprocessed string becomes empty.
+
+ Time Complexity: O(n^2)
+ - substring() and String concatenation create new strings.
+
+ Space Complexity: O(n)
+ - Recursion stack.
+*/
+    static String skip(String up,char c){
+        if(up.isEmpty()) {
+            return "";
+        }
+        char ch = up.charAt(0);
+        if(ch == c){
+            return skip(up.substring(1),c);
+        }else{
+            return ch + skip(up.substring(1),c);
+        }
+    }
+
 }
