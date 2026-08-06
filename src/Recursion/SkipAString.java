@@ -39,4 +39,15 @@ public class SkipAString {
             return skip(up.substring(1), wordToSkip, ans + up.charAt(0));
         }
     }
+
+
+    static String skip(String up, String wordToSkip){
+        if (up.isEmpty()) return "";
+
+        if (up.startsWith(wordToSkip)) {
+            return skip(up.substring(wordToSkip.length()), wordToSkip);
+        } else {
+            return up.charAt(0) + skip(up.substring(1), wordToSkip);
+        }
+    }
 }
