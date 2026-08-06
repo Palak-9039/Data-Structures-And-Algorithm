@@ -7,21 +7,27 @@ package Recursion;
  - Maintain two strings:
    - up  -> unprocessed part of the original string.
    - ans -> processed part (answer built so far).
- - At each recursive call, check if the unprocessed string starts
-   with the substring to be skipped.
+ - At each recursive call, check if the unprocessed string starts with the substring to be skipped.
  - If it does, skip the entire substring by moving ahead by its length.
- - Otherwise, append the first character of the unprocessed string
-   to the answer and continue recursively.
+ - Otherwise, append the first character of the unprocessed string to the answer and continue recursively.
  - When the unprocessed string becomes empty, return the final answer.
 
- Why This Works:
- - Each recursive call processes a smaller portion of the string.
- - Whenever the target substring is found at the beginning of the
-   unprocessed string, it is completely ignored.
- - Otherwise, the current character is preserved in the answer.
+ Time Complexity: O(n^2) - substring() and String concatenation create new strings.
+ Space Complexity: O(n) - Recursion stack.
+
+
+ 2. Skip a Substring from String using Recursion (Returning the Answer)
+
+ Approach:
+ - Treat the given string as the unprocessed part of the input.
+ - At each recursive call, check whether the unprocessed string starts with the target substring.
+ - If it does, skip the entire substring by recursively processing the remaining string.
+ - Otherwise, keep the first character and concatenate it with the answer returned by the smaller recursive call.
+ - Continue until the unprocessed string becomes empty.
 
  Time Complexity: O(n^2)
- - substring() and String concatenation create new strings.
+ - substring() creates new strings.
+ - String concatenation creates a new String at every recursive call.
 
  Space Complexity: O(n)
  - Recursion stack.
@@ -41,6 +47,7 @@ public class SkipAString {
     }
 
 
+    //  2. Skip a Substring from String using Recursion (returning the answer)
     static String skip(String up, String wordToSkip){
         if (up.isEmpty()) return "";
 
