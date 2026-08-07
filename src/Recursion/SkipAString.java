@@ -31,6 +31,23 @@ package Recursion;
 
  Space Complexity: O(n)
  - Recursion stack.
+
+
+ 3. Skip a Substring from String using Recursion (Index + StringBuilder)
+
+ Approach:
+ - Keep the original string unchanged and use an index i to track the current position.
+ - Use a StringBuilder to store the characters that should be kept.
+ - At each recursive call, check whether the target substring starts at the current index.
+ - If it does, skip the entire substring by moving the index forward by the length of the target substring.
+ - Otherwise, append the current character to the StringBuilder and move the index forward by one.
+ - When the index reaches the end of the string, return the StringBuilder.
+
+ Time Complexity: O(n) - Assuming the target substring has a fixed/small length.
+
+ Space Complexity: O(n)
+ - StringBuilder stores the resulting string.
+ - Recursion stack can grow up to O(n).
 */
 
 public class SkipAString {
@@ -57,4 +74,18 @@ public class SkipAString {
             return up.charAt(0) + skip(up.substring(1), wordToSkip);
         }
     }
+
+
+    // 3. Skip a Substring from String using Recursion (Index + StringBuilder)
+    static StringBuilder skip3(String up, String wordToSkip,StringBuilder sb, int i){
+        if (i == up.length()) return sb;
+
+        if (up.startsWith(wordToSkip,i)) {
+            return skip3(up, wordToSkip,sb,i + wordToSkip.length());
+        } else {
+            return  skip3(up, wordToSkip,sb.append(up.charAt(i)),i+1);
+        }
+    }
+
+
 }
