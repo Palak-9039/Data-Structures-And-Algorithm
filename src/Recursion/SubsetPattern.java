@@ -51,13 +51,13 @@ public class SubsetPattern {
     // The same list is passed through every recursive call,
     // so each base case directly adds its result to the list.
     // No list needs to be returned or combined at every call.
-    static void subseqences(String up, String ans, List<String> list){
+    static void subsetUsingAccumulator(String up, String ans, List<String> list){
         if(up.isEmpty()){
             list.add(ans);
             return;
         }
 
-         subseqences(up.substring(1),ans + up.charAt(0),list);
-         subseqences(up.substring(1),ans,list);
+        subsetUsingAccumulator(up.substring(1),ans + up.charAt(0),list);
+        subsetUsingAccumulator(up.substring(1),ans,list);
     }
 }
