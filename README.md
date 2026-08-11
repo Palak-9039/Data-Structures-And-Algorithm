@@ -1,6 +1,6 @@
 # Data Structures & Algorithm
 
-This repository contains my solutions to DSA problems while preparing for software engineering interviews.
+This repository contains my implementations and solutions to Data Structures and Algorithms problems as part of my preparation for software engineering interviews.
 
 ## Language
 
@@ -11,14 +11,20 @@ This repository contains my solutions to DSA problems while preparing for softwa
 - Arrays
 - Binary Search
 - Strings
+- Recursion & Backtracking
+- Sorting
 - Linked Lists
 - Trees
 - Graphs
 - Dynamic Programming
 - Greedy
 
-## Goal
+## Approach
 
-- Solve at least 2 problems daily
-- Learn one DSA topic every day
-- Write clean and optimized solutions
+- Focus on understanding problem-solving patterns rather than memorizing solutions.
+- Analyze time and space complexity for each solution.
+- Document the approach and reasoning behind solutions.
+- Revisit problems to improve understanding and implementation.
+
+## Goal
+Build strong problem-solving skills and develop a solid understanding of DSA concepts for technical interviews.
