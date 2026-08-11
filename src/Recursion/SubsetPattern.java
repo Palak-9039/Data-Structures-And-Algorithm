@@ -47,7 +47,10 @@ public class SubsetPattern {
         return ansList;
     }
 
-
+    // Approach 2: Use a shared list as an accumulator.
+    // The same list is passed through every recursive call,
+    // so each base case directly adds its result to the list.
+    // No list needs to be returned or combined at every call.
     static void subseqences(String up, String ans, List<String> list){
         if(up.isEmpty()){
             list.add(ans);
