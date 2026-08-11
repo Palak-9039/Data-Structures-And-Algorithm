@@ -4,34 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
  /*
-  Subset of a String using Recursion
+ Subsets / Subsequences of a String
 
-  Approach:
-  - For every character, make two choices:
-    1. Include the current character in the answer.
-    2. Exclude the current character from the answer.
-  - Recursively process the remaining unprocessed string for both choices.
-  - Each recursive call returns a list containing all subsets generated
-    from that smaller problem.
-  - Combine the lists returned by both recursive calls using addAll().
-  - When the unprocessed string becomes empty, add the current answer
-    to a new list and return it.
-  - The empty string is also included because it represents the empty subset.
+ General Approach:
+ - For every character, make two choices:
+   1. Include the character.
+   2. Exclude the character.
+ - Recursively process the remaining string for both choices.
+ - When the unprocessed string becomes empty, the current answer
+   represents one complete subset.
+ - Since every character has two choices, a string of length n
+   produces 2^n subsets, including the empty subset.
 
-  Time Complexity: O(2^n)
-  - Each character creates two recursive branches, resulting in 2^n subsets.
-  - Additional string/list operations can add overhead.
+ Time Complexity: O(n * 2^n)
+ - There are 2^n possible subsets.
+ - Building the resulting strings can take up to O(n) work.
 
-  Space Complexity: O(2^n)
-  - The final result contains 2^n subsets.
-  - Recursion and intermediate lists also require additional space.
- */
+ Space Complexity: O(n * 2^n)
+ - The result contains 2^n strings with lengths up to n.
+ - Recursion uses O(n) stack space.
+*/
 
+
+/
 public class SubsetPattern {
-    public static void main(String[] args) {
-        System.out.println(subsetOfString("abc",""));
-    }
 
+
+    // Approach 1: Return the results from each recursive call.
+    // Each call creates its own list and combines the results
+    // returned by the two recursive branches.
     static List<String> subsetOfString(String up, String ans){
         if(up.isEmpty()) {
             List<String> list = new ArrayList<>();
@@ -44,5 +45,16 @@ public class SubsetPattern {
         ansList.addAll(subsetOfString(up.substring(1),ans));
 
         return ansList;
+    }
+
+
+    static void subseqences(String up, String ans, List<String> list){
+        if(up.isEmpty()){
+            list.add(ans);
+            return;
+        }
+
+         subseqences(up.substring(1),ans + up.charAt(0),list);
+         subseqences(up.substring(1),ans,list);
     }
 }
