@@ -33,7 +33,7 @@ public class SubsetPattern {
     // Approach 1: Return the results from each recursive call.
     // Each call creates its own list and combines the results
     // returned by the two recursive branches.
-    static List<String> subsetOfString(String up, String ans){
+    static List<String> subsetUsingReturn(String up, String ans){
         if(up.isEmpty()) {
             List<String> list = new ArrayList<>();
             list.add(ans);
@@ -41,8 +41,8 @@ public class SubsetPattern {
         }
 
         List<String> ansList = new ArrayList<>();
-        ansList.addAll(subsetOfString(up.substring(1),ans + up.charAt(0)));
-        ansList.addAll(subsetOfString(up.substring(1),ans));
+        ansList.addAll(subsetUsingReturn(up.substring(1),ans + up.charAt(0)));
+        ansList.addAll(subsetUsingReturn(up.substring(1),ans));
 
         return ansList;
     }
