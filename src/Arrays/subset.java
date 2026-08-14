@@ -124,4 +124,47 @@ Space Complexity: O(n * 2^n)
         }
         generateSubsetsRecursively(num, outer, i + 1);
     }
+
+/*
+Subset Generation With Duplicates - Recursive Approach
+
+Approach:
+
+- Sort the array so duplicate elements are adjacent.
+- Pass the current index and the end index of the previously
+  generated subsets as recursive parameters.
+- For a normal element, extend all existing subsets.
+- For a duplicate element, start from end + 1 so that only the
+  subsets created during the previous iteration are extended.
+- This prevents duplicate subsets from being generated.
+- After processing the current element, update end to the last
+  newly created subset and pass it to the next recursive call.
+
+Time Complexity: O(n * 2^n)
+
+- In the worst case, there can be 2^n subsets.
+- Copying subsets can require O(n) time.
+
+Space Complexity: O(n * 2^n)
+
+- The generated subsets require O(n * 2^n) space.
+- The recursion stack requires O(n) additional space.
+*/
+
+    static void generateSubsetsWithDuplicatesRecursively(int[] num, List<List<Integer>> outer, int i, int end) {
+        if (i == num.length) return;
+
+        int start = 0;
+        if (i > 0 && num[i] == num[i - 1]) {
+            start = end + 1;
+        }
+        end = outer.size() - 1;
+        int n = outer.size();
+        for (int j = start; j < n; j++) {
+            List<Integer> internal = new ArrayList<>(outer.get(j));
+            internal.add(num[i]);
+            outer.add(internal);
+        }
+        generateSubsetsWithDuplicatesRecursively(num, outer, i + 1, end);
+    }
 }
