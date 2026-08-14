@@ -88,4 +88,40 @@ public class subset {
         }
         return outer;
     }
+
+/*
+Subset Generation - Recursive Approach
+
+Approach:
+
+- Pass the current array index as part of the recursive state.
+- For the current element, iterate through all subsets that already exist.
+- Create a new subset by copying each existing subset and adding
+  the current element.
+- Recursively move to the next array element.
+- The recursion replaces the outer loop of the iterative solution.
+- The inner loop is still required to extend all subsets created
+  before processing the current element.
+
+Time Complexity: O(n * 2^n)
+
+- The algorithm generates 2^n subsets.
+- Creating each subset can require O(n) time due to copying.
+
+Space Complexity: O(n * 2^n)
+
+- O(n * 2^n) space is required for the generated subsets.
+- The recursive call stack requires O(n) additional space.
+*/
+    static void generateSubsetsRecursively(int[] num, List<List<Integer>> outer, int i) {
+        if (i == num.length) return;
+
+        int n = outer.size();
+        for (int j = 0; j < n; j++) {
+            List<Integer> internal = new ArrayList<>(outer.get(j));
+            internal.add(num[i]);
+            outer.add(internal);
+        }
+        generateSubsetsRecursively(num, outer, i + 1);
+    }
 }
